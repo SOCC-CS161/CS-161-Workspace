@@ -14,7 +14,8 @@
         "vscode": {
             "extensions": [
                 "formulahendry.code-runner",
-                "spencerwmiles.vscode-task-buttons"
+                "spencerwmiles.vscode-task-buttons",
+                "ms-vscode.cpptools-extension-pack"
             ],
             "settings": {
                 "code-runner.showRunIconInEditorTitleMenu": true,
