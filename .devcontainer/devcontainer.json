@@ -1,0 +1,39 @@
+{
+    "name": "C++ Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/cpp:debian",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "formulahendry.code-runner",
+                "spencerwmiles.vscode-task-buttons"
+            ],
+            "settings": {
+                "code-runner.showRunIconInEditorTitleMenu": true,
+                "code-runner.runInTerminal": true,
+                "code-runner.saveFileBeforeRun": true,
+                "VsCodeTaskButtons.showCounter": true,
+                "VsCodeTaskButtons.tasks": [
+                    {
+                        "label": "$(play) Build & Run",
+                        "task": "Build & Run",
+                        "tooltip": "Build and run current file"
+                    },
+                    {
+                        "label": "$(beaker) Run Tests",
+                        "task": "Build and Run Tests",
+                        "tooltip": "Run all tests"
+                    }
+                ]
+            }
+        }
+    }
+} 

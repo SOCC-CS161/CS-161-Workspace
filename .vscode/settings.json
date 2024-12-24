@@ -1,0 +1,22 @@
+{
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.preserveFocus": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt"
+    },
+    "VsCodeTaskButtons.showCounter": true,
+    "VsCodeTaskButtons.tasks": [
+        {
+            "label": "$(play) Build & Run",
+            "task": "Build & Run",
+            "tooltip": "Build and run current file"
+        },
+        {
+            "label": "$(beaker) Run Tests",
+            "task": "Build and Run Tests",
+            "tooltip": "Run all tests"
+        }
+    ]
+} 
