@@ -47,6 +47,42 @@
                     "message": 5
                 }
             }
+        },
+        {
+            "label": "Build Tests (Debug)",
+            "type": "shell",
+            "command": "mkdir -p build && g++ -g test/run_io_tests.cpp -o build/test_runner",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "rm -f ${fileBasenameNoExtension} ${fileDirname}/${fileBasenameNoExtension}",
+            "group": "clean",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "new"
+            },
+            "problemMatcher": []
         }
     ]
 }
