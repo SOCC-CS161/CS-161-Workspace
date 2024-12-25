@@ -18,5 +18,11 @@
             "task": "Build and Run Tests",
             "tooltip": "Run all tests"
         }
-    ]
+    ],
+    "debug.javascript.autoAttachFilter": "disabled",
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.toolBarLocation": "floating",
+    "debug.showInStatusBar": "always",
+    "debug.inlineValues": true,
+    "debug.hideLaunchConfigurations": ["Run C/C++ File", "Debug C/C++ File"]
 } 

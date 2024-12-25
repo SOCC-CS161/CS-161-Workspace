@@ -21,6 +21,11 @@
                 "code-runner.showRunIconInEditorTitleMenu": true,
                 "code-runner.runInTerminal": true,
                 "code-runner.saveFileBeforeRun": true,
+                "code-runner.preserveFocus": true,
+                "code-runner.clearPreviousOutput": true,
+                "code-runner.executorMap": {
+                    "cpp": "cd $dir/.. && mkdir -p build && g++ -std=c++20 -g src/main.cpp -o build/program && ./build/program"
+                },
                 "VsCodeTaskButtons.showCounter": true,
                 "VsCodeTaskButtons.tasks": [
                     {
@@ -33,12 +38,20 @@
                         "task": "Build and Run Tests",
                         "tooltip": "Run all tests"
                     }
-                ]
+                ],
+                "debug.javascript.autoAttachFilter": "disabled",
+                "debug.allowBreakpointsEverywhere": true,
+                "debug.toolBarLocation": "floating",
+                "debug.showInStatusBar": "always",
+                "debug.inlineValues": true,
+                "debug.hideLaunchConfigurations": ["Run C/C++ File"]
             }
         }
     },
     
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.vscode/extensions,target=/root/.vscode-server/extensions,type=bind,consistency=cached"
-    ]
+    ],
+
+    "postCreateCommand": "./.devcontainer/setup-git.sh"
 } 
