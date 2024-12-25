@@ -4,21 +4,48 @@
 #include <string>
 #include <vector>
 
+const std::string NULL_INPUT = "";  // Named constant for no input
+
+enum class ComparisonType {
+    EQUALS,             // Exact match
+    NOT_EQUALS,         // Must not match exactly
+    CONTAINS,           // Must contain substring
+    NOT_CONTAINS,       // Must not contain substring
+    STARTS_WITH,        // Must start with substring
+    ENDS_WITH,         // Must end with substring
+    REGEX_MATCH         // Matches regular expression
+};
+
 struct TestCase {
     std::string name;
     std::string input;
     std::string expected_output;
-    bool exact_match = false;           // If true, requires exact match. If false, uses contains
-    bool ignore_case = false;           // If true, case-insensitive comparison
-    bool ignore_whitespace = false;     // If true, ignores extra whitespace
+    ComparisonType comparison_type = ComparisonType::CONTAINS;
+    bool ignore_case = false;
+    bool ignore_whitespace = false;
+    bool has_input = true;
 };
 
 std::vector<TestCase> loadTestCases() {
     return {
-        {"Contains Test", "42\n", "42", false, false, false},
-        {"Exact Match Test", "123\n", "Enter a number: 123\n", true, false, false},
-        {"Case Insensitive Test", "42\n", "ENTER A NUMBER: 42\n", true, true, false},
-        {"Whitespace Test", "42\n", "42", false, false, true}
+        {
+            "Must contain 'hello'", 
+            NULL_INPUT,
+            "hello",
+            ComparisonType::CONTAINS,
+            true,   // case insensitive
+            true,   // ignore whitespace
+            false   // no input
+        },
+        {
+            "Must not contain 'world'",
+            NULL_INPUT,
+            "world",
+            ComparisonType::NOT_CONTAINS,
+            true,   // case insensitive
+            true,   // ignore whitespace
+            false   // no input
+        }
     };
 }
 

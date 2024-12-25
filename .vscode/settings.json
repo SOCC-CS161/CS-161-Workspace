@@ -3,7 +3,9 @@
     "code-runner.saveFileBeforeRun": true,
     "code-runner.preserveFocus": true,
     "code-runner.clearPreviousOutput": true,
-    "code-runner.customCommand": "workbench.action.tasks.runTask|Build & Run",
+    "code-runner.executorMap": {
+        "cpp": "cd $dir/.. && mkdir -p build && g++ -std=c++20 -g src/main.cpp -o build/program && ./build/program"
+    },
     "VsCodeTaskButtons.showCounter": true,
     "VsCodeTaskButtons.tasks": [
         {
@@ -16,8 +18,5 @@
             "task": "Build and Run Tests",
             "tooltip": "Run all tests"
         }
-    ],
-    "code-runner.executorMap": {
-        "cpp": "mkdir -p build && g++ -g $fileName -o build/$fileNameWithoutExt && ./build/$fileNameWithoutExt"
-    }
+    ]
 } 
