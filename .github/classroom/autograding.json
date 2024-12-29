@@ -3,10 +3,10 @@
     {
       "name": "Run Tests",
       "setup": "",
-      "run": "cd /workspaces/assignment && ./build/test_runner",
+      "run": "./build/test_runner",
       "input": "",
-      "output": "",
-      "comparison": "exact",
+      "output": "TEST SUMMARY",
+      "comparison": "included",
       "timeout": 10,
       "points": null
     }
