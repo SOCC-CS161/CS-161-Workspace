@@ -11,6 +11,7 @@
 using namespace std;
 
 int main() {
-    cout << "Hello, Codespaces!" << endl; // Change this message to print anyting you like other than  "Hello, Codespaces!"
+    // INSTRUCTIONS: Change the message below to print anyting you like other than  "Hello, Codespaces!"
+    cout << "Hello, Codespaces!" << endl;
     return 0;
 } 
