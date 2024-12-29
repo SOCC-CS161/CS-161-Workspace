@@ -11,7 +11,7 @@ jobs:
       - name: Build and run tests
         run: |
           mkdir -p build
-          g++ -std=c++20 -g test/run_tests_with_xml.cpp test/test_utils.cpp -o build/test_runner_xml
+          g++ -std=c++20 -g test/run_tests_with_xml.cpp test/test_utils.cpp test/test_runner.cpp -o build/test_runner_xml
           ./build/test_runner_xml
       - name: Test Report
         uses: dorny/test-reporter@v1
