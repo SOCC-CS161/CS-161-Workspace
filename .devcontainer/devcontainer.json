@@ -43,7 +43,7 @@
                 "debug.allowBreakpointsEverywhere": true,
                 "debug.toolBarLocation": "floating",
                 "debug.showInStatusBar": "always",
-                "debug.inlineValues": true,
+                "debug.inlineValues": "auto",
                 "debug.hideLaunchConfigurations": ["Run C/C++ File"]
             }
         }
