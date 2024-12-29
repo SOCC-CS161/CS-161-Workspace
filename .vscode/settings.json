@@ -24,5 +24,9 @@
     "debug.toolBarLocation": "floating",
     "debug.showInStatusBar": "always",
     "debug.inlineValues": true,
-    "debug.hideLaunchConfigurations": ["Run C/C++ File", "Debug C/C++ File"]
+    "debug.hideLaunchConfigurations": ["Run C/C++ File", "Debug C/C++ File"],
+    "git.postCommitCommand": "push",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true
 } 

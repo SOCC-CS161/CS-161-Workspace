@@ -8,6 +8,16 @@ git config --global credential.helper cache
 git config --global color.ui auto
 git config --global --add safe.directory "/workspaces/${PWD##*/}"
 
+# Configure git to automatically stage changes and simplify workflows
+git config --global add.all true
+git config --global push.default current
+git config --global push.autoSetupRemote true   # Automatically sets up remote tracking
+git config --global push.followTags true        # Push tags automatically with commits
+git config --global core.autocrlf input         # Handles line endings automatically
+
+# Configure VS Code to auto-push on commit
+git config --global postCommit.push true        # Enables auto-push after commit
+
 # In Codespaces or GitHub Actions, use default values
 if [ -n "$CODESPACES" ] || [ -n "$GITHUB_ACTIONS" ]; then
     # Only set if not already configured
