@@ -30,7 +30,7 @@
         {
             "label": "Build and Run Tests",
             "type": "shell",
-            "command": "mkdir -p build && g++ -std=c++20 -g test/run_io_tests.cpp -o build/test_runner && ./build/test_runner",
+            "command": "mkdir -p build && g++ -std=c++20 -g test/run_io_tests.cpp test/test_utils.cpp -o build/test_runner && ./build/test_runner",
             "group": "test",
             "presentation": {
                 "reveal": "always",
