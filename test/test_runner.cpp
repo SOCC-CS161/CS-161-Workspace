@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <unistd.h>
 #include <regex>
+#include <iomanip>
 
 std::vector<TestResult> runAllTests(const std::string& program, const std::vector<TestCase>& test_cases) {
     std::vector<TestResult> results;
