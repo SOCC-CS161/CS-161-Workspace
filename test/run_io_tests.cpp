@@ -156,7 +156,7 @@ void runTests(const std::string& program, const std::vector<TestCase>& test_case
     printSeparator();
 
     // Open XML output file
-    std::ofstream xml_output("test-results.xml");
+    std::ofstream xml_output("test/test-results.xml");
     writeXmlHeader(xml_output);
 
     // Only compile if we have runtime tests
