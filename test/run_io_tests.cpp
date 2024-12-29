@@ -10,6 +10,7 @@
 #include <numeric>
 #include <regex>
 #include <unistd.h>  // for access()
+#include <chrono>
 #include "test_cases.h"
 
 // Helper functions for string comparison
@@ -121,9 +122,42 @@ bool runSourceTest(const TestCase& test) {
     return compareOutputs(source_content, test.expected_output, test);
 }
 
+// Add XML helper functions
+void writeXmlHeader(std::ofstream& xml) {
+    xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+        << "<testsuites>\n"
+        << "  <testsuite name=\"CS161_Tests\">\n";
+}
+
+void writeXmlFooter(std::ofstream& xml) {
+    xml << "  </testsuite>\n"
+        << "</testsuites>\n";
+}
+
+void writeTestResult(std::ofstream& xml, const TestCase& test, bool passed, 
+                    const std::string& actual_output, double duration) {
+    xml << "    <testcase name=\"" << test.name << "\" "
+        << "time=\"" << duration << "\"";
+    
+    if (!passed) {
+        xml << ">\n"
+            << "      <failure message=\"Test failed\">\n"
+            << "Expected: " << test.expected_output << "\n"
+            << "Actual: " << actual_output << "\n"
+            << "      </failure>\n"
+            << "    </testcase>\n";
+    } else {
+        xml << "/>\n";
+    }
+}
+
 void runTests(const std::string& program, const std::vector<TestCase>& test_cases) {
     std::cout << "\nRUNNING TESTS\n";
     printSeparator();
+
+    // Open XML output file
+    std::ofstream xml_output("test-results.xml");
+    writeXmlHeader(xml_output);
 
     // Only compile if we have runtime tests
     bool needs_compilation = std::any_of(test_cases.begin(), test_cases.end(),
@@ -143,6 +177,8 @@ void runTests(const std::string& program, const std::vector<TestCase>& test_case
     int test_num = 1;  // Add a separate counter for test numbers
     for (const auto& test : test_cases) {
         std::cout << "Test #" << test_num << ": " << test.name << "\n\n";
+        
+        auto start_time = std::chrono::high_resolution_clock::now();
         
         bool passed_test;
         std::string actual_output;
@@ -173,11 +209,16 @@ void runTests(const std::string& program, const std::vector<TestCase>& test_case
             actual_output = "(source code test)";
         }
 
-        if (passed_test) passed++;
-        printTestDetails(test, passed_test, actual_output);
-        printSeparator();
+        auto end_time = std::chrono::high_resolution_clock::now();
+        double duration = std::chrono::duration<double>(end_time - start_time).count();
         
-        test_num++;  // Increment the test number counter
+        // Write both console and XML output
+        printTestDetails(test, passed_test, actual_output);
+        writeTestResult(xml_output, test, passed_test, actual_output, duration);
+        
+        if (passed_test) passed++;
+        test_num++;
+        printSeparator();
     }
 
     // Print summary
@@ -185,6 +226,9 @@ void runTests(const std::string& program, const std::vector<TestCase>& test_case
     std::cout << "Tests Passed: " << passed << "/" << total << " ("
               << std::fixed << std::setprecision(1) << (passed * 100.0 / total) << "%)\n";
     printSeparator();
+    
+    writeXmlFooter(xml_output);
+    xml_output.close();
 }
 
 int main() {
