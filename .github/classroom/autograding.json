@@ -3,7 +3,7 @@
     {
       "name": "Run Tests",
       "setup": "",
-      "run": "./build/test_runner",
+      "run": "./build/test_runner_xml",
       "input": "",
       "output": "TEST SUMMARY",
       "comparison": "included",
