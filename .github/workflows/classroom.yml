@@ -1,0 +1,24 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and run tests
+        run: |
+          mkdir -p build
+          g++ -std=c++20 -g test/run_io_tests.cpp -o build/test_runner
+          ./build/test_runner
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Results
+          path: test-results.xml
+          reporter: java-junit
+      - name: Autograding
+        uses: education/autograding@v1 
