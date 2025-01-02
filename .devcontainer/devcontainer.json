@@ -43,8 +43,16 @@
                 "debug.allowBreakpointsEverywhere": true,
                 "debug.toolBarLocation": "floating",
                 "debug.showInStatusBar": "always",
-                "debug.inlineValues": true,
-                "debug.hideLaunchConfigurations": ["Run C/C++ File"]
+                "debug.inlineValues": "auto",
+                "debug.hideLaunchConfigurations": ["Run C/C++ File"],
+                "files.exclude": {
+                    "**/.devcontainer": true,
+                    "**/.vscode": true,
+                    "**/.github": true,
+                    "**/build": true,
+                    "**/test": true,
+                    "**/.gitignore": true
+                }
             }
         }
     },

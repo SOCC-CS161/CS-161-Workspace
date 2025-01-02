@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Run Tests",
+      "setup": "",
+      "run": "./build/test_runner_xml",
+      "input": "",
+      "output": "TEST SUMMARY",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+} 

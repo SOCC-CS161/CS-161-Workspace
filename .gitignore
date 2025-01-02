@@ -1,3 +1,10 @@
-/main
 # Build directory
-build/
+/build/
+/main
+
+# Backup files
+*~
+*.swp
+
+# DS_Store
+.DS_Store
