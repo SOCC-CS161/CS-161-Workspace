@@ -11,6 +11,7 @@ struct TestResult {
     std::string actual;
     bool passed;
     double duration;
+    std::string input_used;
 };
 
 std::vector<TestResult> runAllTests(const std::string& program, const std::vector<TestCase>& test_cases);

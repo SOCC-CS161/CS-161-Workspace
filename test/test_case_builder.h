@@ -7,6 +7,12 @@
 struct TestCaseBuilder {
     TestCase test_case;
 
+    TestCaseBuilder() {
+        // Initialize default values
+        test_case.use_random_input = false;
+        test_case.input_generator = nullptr;
+    }
+
     TestCaseBuilder& name(const std::string& value) {
         test_case.name = value;
         return *this;
@@ -14,6 +20,13 @@ struct TestCaseBuilder {
 
     TestCaseBuilder& input(const std::string& value) {
         test_case.input = value;
+        test_case.use_random_input = false;  // Disable random input when specific input is set
+        return *this;
+    }
+
+    TestCaseBuilder& random_input(InputGenerator generator) {
+        test_case.input_generator = generator;
+        test_case.use_random_input = true;
         return *this;
     }
 
@@ -57,22 +70,14 @@ struct TestCaseBuilder {
         return *this;
     }
 
-    TestCaseBuilder& time_zone_offset(int value) {
-        test_case.time_zone_offset = value;
-        return *this;
-    }
-
-    TestCaseBuilder& accuracy_window(int value) {
-        test_case.accuracy_window = value;
-        return *this;
-    }
-
     TestCaseBuilder& skip_comments(bool value) {
         test_case.skip_comments = value;
         return *this;
     }
 
-    operator TestCase() const { return test_case; }
+    TestCase build() {
+        return test_case;
+    }
 };
 
 #endif 

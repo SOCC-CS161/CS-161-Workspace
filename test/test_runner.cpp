@@ -37,7 +37,14 @@ std::vector<TestResult> runAllTests(const std::string& program, const std::vecto
                 continue;
             }
             
-            std::string command = "echo '" + test.input + "' | " + program;
+            // Get input - either from test case or generate it
+            std::string input = test.use_random_input && test.input_generator ? 
+                               test.input_generator() : test.input;
+            
+            // Store the actual input used for reference
+            result.input_used = input;
+            
+            std::string command = "echo '" + input + "' | " + program;
             FILE* pipe = popen(command.c_str(), "r");
             if (!pipe) {
                 std::cerr << "Failed to run command\n";
@@ -79,6 +86,12 @@ void printTestResults(const std::vector<TestResult>& results) {
         std::cout << "Status: " << (result.passed ? "✅ PASS" : "❌ FAIL") << "\n";
         std::cout << "Expected: " << result.expected << "\n";
         std::cout << "Actual: " << result.actual << "\n";
+        
+        // Print input used if it was a random input test
+        if (!result.input_used.empty()) {
+            std::cout << "Input Used: " << result.input_used << "\n";
+        }
+        
         std::cout << "\n" << std::string(80, '-') << "\n";
         
         if (result.passed) passed++;

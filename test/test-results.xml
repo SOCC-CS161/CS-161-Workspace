@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="CS161_Tests">
-    <testcase name="Part1_Welcome_Message" time="0.00183962"/>
-    <testcase name="Part1_Time_Display" time="0.001399"/>
-    <testcase name="Part2_Food_Charge" time="0.0014765"/>
-    <testcase name="Part2_Tax_Amount" time="0.00172317"/>
-    <testcase name="Part2_Gratuity_Amount" time="0.00333025"/>
-    <testcase name="Part2_Total_Amount" time="0.00220075"/>
-    <testcase name="Part2_Decimal_Places" time="0.00222329"/>
-    <testcase name="Part2_Tax_Constant_Usage" time="0.000863459"/>
-    <testcase name="Part3_Change_Calculation" time="0.00246421"/>
-    <testcase name="Extra_Credit_Change_Breakdown" time="0.00236158"/>
+    <testcase name="Welcome Message - Exact Match" time="0.00149575"/>
+    <testcase name="Case Insensitive Matching" time="0.00124108"/>
+    <testcase name="Whitespace Ignoring" time="0.00122621"/>
+    <testcase name="Contains String" time="0.00114292"/>
+    <testcase name="Not Contains String" time="0.00137467"/>
+    <testcase name="Starts With" time="0.00117821"/>
+    <testcase name="Ends With" time="0.00128221"/>
+    <testcase name="Regex Pattern" time="0.00162338"/>
+    <testcase name="Source Code Constant - Skip Comments" time="0.00123833"/>
+    <testcase name="Not Equals Test" time="0.00169567"/>
+    <testcase name="Source Test - Find String in Comments" time="0.000210125"/>
+    <testcase name="Source Test - Skip Comments" time="0.000596959"/>
   </testsuite>
 </testsuites>

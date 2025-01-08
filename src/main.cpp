@@ -7,17 +7,63 @@
  ******************************************************************************/
 
 #include <iostream>
-using namespace std;
+#include <string>
+#include <algorithm>
+#include <cctype>
 
-int main()
-{
-  // (Part 1) Welcome the user and state the current time in PST
+// Global constant for testing source code scanning
+const double PI = 3.14159;
 
-  // (Part 2) Request the cost of food and gratuaty percentage from the user
+// Function to convert string to uppercase
+std::string toUpper(const std::string& str) {
+    std::string result = str;
+    std::transform(result.begin(), result.end(), result.begin(), ::toupper);
+    return result;
+}
 
-  // Compute and print out the the itemized bill including the food charge, tax, gratuity, and total due
+// Function to check if string starts with prefix
+bool startsWith(const std::string& str, const std::string& prefix) {
+    return str.substr(0, prefix.length()) == prefix;
+}
 
-  // (Part 3) Request the amount of cash tendered from the user and compute and display the change due to the customer
-
-  // (Extra Credit) Print out which bills and coins should be provided to the customer as change
+int main() {
+    std::string input;
+    
+    // Welcome message for exact match testing
+    std::cout << "Welcome to the Test Framework Demo!" << std::endl;
+    
+    // Get input for testing
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, input);
+    
+    // Output original and uppercase for case sensitivity testing
+    std::cout << "You entered: " << input << std::endl;
+    std::cout << "Uppercase: " << toUpper(input) << std::endl;
+    
+    // Output with extra whitespace for whitespace testing
+    std::cout << "With    extra    spaces:    " << input << std::endl;
+    
+    // Conditional output for contains/not contains testing
+    if (input.find("hello") != std::string::npos) {
+        std::cout << "Input contains 'hello'" << std::endl;
+    } else {
+        std::cout << "Input does not contain 'hello'" << std::endl;
+    }
+    
+    // Prefix testing
+    if (startsWith(input, "test")) {
+        std::cout << "Input starts with 'test'" << std::endl;
+    }
+    
+    // Suffix testing
+    if (input.length() >= 3 && input.substr(input.length() - 3) == "end") {
+        std::cout << "Input ends with 'end'" << std::endl;
+    }
+    
+    // Pattern matching for regex testing
+    if (std::all_of(input.begin(), input.end(), ::isdigit)) {
+        std::cout << "Pattern: all digits" << std::endl;
+    }
+    
+    return 0;
 }
