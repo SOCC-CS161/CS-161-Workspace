@@ -17,6 +17,14 @@
 int main() {
     const std::string program = "./build/program";
     auto test_cases = loadTestCases();
+    
+    if (test_cases.empty()) {
+        std::cout << "\nNo test cases defined.\n";
+        std::cout << "Add test cases to the loadTestCases() function in test/test_cases.h\n";
+        std::cout << "See the comments in that file for examples.\n\n";
+        return 0;
+    }
+
     auto results = runAllTests(program, test_cases);
     printTestResults(results);
     
