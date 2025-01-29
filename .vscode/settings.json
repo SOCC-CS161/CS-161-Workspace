@@ -17,6 +17,11 @@
             "label": "$(beaker) Run Tests",
             "task": "Build and Run Tests",
             "tooltip": "Run all tests"
+        },
+        {
+            "label": "$(sparkle) Format",
+            "task": "Format",
+            "tooltip": "Format current file"
         }
     ],
     "debug.javascript.autoAttachFilter": "disabled",

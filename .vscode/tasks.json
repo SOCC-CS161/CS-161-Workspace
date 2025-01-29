@@ -85,6 +85,21 @@
                 "panel": "new"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Format",
+            "type": "shell",
+            "command": "clang-format",
+            "args": [
+                "-i",
+                "${file}"
+            ],
+            "group": "none",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "new"
+            },
+            "problemMatcher": []
         }
     ]
 }

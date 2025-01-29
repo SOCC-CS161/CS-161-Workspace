@@ -1,65 +1,72 @@
 {
-    "name": "C++ Dev Container",
-    "image": "mcr.microsoft.com/devcontainers/cpp:debian",
-    
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": true,
-            "installOhMyZsh": true,
-            "upgradePackages": true
-        }
-    },
+  "name": "C++ Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/cpp:debian",
 
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "formulahendry.code-runner",
-                "spencerwmiles.vscode-task-buttons",
-                "ms-vscode.cpptools-extension-pack"
-            ],
-            "settings": {
-                "code-runner.showRunIconInEditorTitleMenu": true,
-                "code-runner.runInTerminal": true,
-                "code-runner.saveFileBeforeRun": true,
-                "code-runner.preserveFocus": true,
-                "code-runner.clearPreviousOutput": true,
-                "code-runner.executorMap": {
-                    "cpp": "cd $dir/.. && mkdir -p build && g++ -std=c++20 -g src/main.cpp -o build/program && ./build/program"
-                },
-                "VsCodeTaskButtons.showCounter": true,
-                "VsCodeTaskButtons.tasks": [
-                    {
-                        "label": "$(play) Build & Run",
-                        "task": "Build & Run",
-                        "tooltip": "Build and run current file"
-                    },
-                    {
-                        "label": "$(beaker) Run Tests",
-                        "task": "Build and Run Tests",
-                        "tooltip": "Run all tests"
-                    }
-                ],
-                "debug.javascript.autoAttachFilter": "disabled",
-                "debug.allowBreakpointsEverywhere": true,
-                "debug.toolBarLocation": "floating",
-                "debug.showInStatusBar": "always",
-                "debug.inlineValues": "auto",
-                "debug.hideLaunchConfigurations": ["Run C/C++ File"],
-                "files.exclude": {
-                    "**/.devcontainer": true,
-                    "**/.vscode": true,
-                    "**/.github": true,
-                    "**/build": true,
-                    "**/test": true,
-                    "**/.gitignore": true
-                }
-            }
-        }
-    },
-    
-    "mounts": [
-        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.vscode/extensions,target=/root/.vscode-server/extensions,type=bind,consistency=cached"
-    ],
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
 
-    "postCreateCommand": "./.devcontainer/setup-git.sh"
-} 
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "formulahendry.code-runner",
+        "spencerwmiles.vscode-task-buttons",
+        "ms-vscode.cpptools-extension-pack"
+      ],
+      "settings": {
+        "code-runner.showRunIconInEditorTitleMenu": true,
+        "code-runner.runInTerminal": true,
+        "code-runner.saveFileBeforeRun": true,
+        "code-runner.preserveFocus": true,
+        "code-runner.clearPreviousOutput": true,
+        "code-runner.executorMap": {
+          "cpp": "cd $dir/.. && mkdir -p build && g++ -std=c++20 -g src/main.cpp -o build/program && ./build/program"
+        },
+        "VsCodeTaskButtons.showCounter": true,
+        "VsCodeTaskButtons.tasks": [
+          {
+            "label": "$(play) Build & Run",
+            "task": "Build & Run",
+            "tooltip": "Build and run current file"
+          },
+          {
+            "label": "$(beaker) Run Tests",
+            "task": "Build and Run Tests",
+            "tooltip": "Run all tests"
+          },
+          {
+            "label": "$(sparkle) Format",
+            "task": "Format",
+            "tooltip": "Format current file"
+          }
+        ],
+        "debug.javascript.autoAttachFilter": "disabled",
+        "debug.allowBreakpointsEverywhere": true,
+        "debug.toolBarLocation": "floating",
+        "debug.showInStatusBar": "always",
+        "debug.inlineValues": "auto",
+        "debug.hideLaunchConfigurations": [
+          "Run C/C++ File"
+        ],
+        "files.exclude": {
+          "**/.devcontainer": true,
+          "**/.vscode": true,
+          "**/.github": true,
+          "**/build": true,
+          "**/test": true,
+          "**/.gitignore": true
+        }
+      }
+    }
+  },
+
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.vscode/extensions,target=/root/.vscode-server/extensions,type=bind,consistency=cached"
+  ],
+
+  "postCreateCommand": "./.devcontainer/setup-git.sh && sudo apt-get update && sudo apt-get install -y clang-format"
+}
